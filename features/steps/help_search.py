@@ -32,9 +32,9 @@ def click_search_icon(context):
     sleep(2)
 
 
-@then('Cancel results for {search_word} are shown')
+@then('Help results for {search_word} are shown')
 def verify_found_results_text(context, search_word):
-    actual = context.driver.find_element(ACTUAL_RESULT).text.ToString();
-    print(actual);
+    actual = context.driver.find_element(*ACTUAL_RESULT).text
     assert search_word.lower() in actual.lower(), f"Expected query not in {actual.lower()}"
+    #assert search_word.lower() in context.driver.current_url.lower(), f"Expected query not in {context.driver.current_url.lower()}"
 

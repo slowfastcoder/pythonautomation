@@ -6,5 +6,5 @@ Feature: Test Scenarios for Help Search Functionality
     Given Open Amazon Help Page
     When Input Cancel Order into help search field
     And Press Enter on Search Field
-    Then Cancel results for Cancel Items are shown
+    Then Help results for Cancel are shown
 

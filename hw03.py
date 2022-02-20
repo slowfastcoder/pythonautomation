@@ -44,10 +44,11 @@ submitBtnEle = driver.find_element(By.ID, 'continue')
 
 
 #todo Update a test case for support search using BDD
-#see feature folder
+#see feature folder -help_search.feature and -help_search.py
 
 #todo create test case using BDD that opens amazon.com and clicks on cart and verties that your cart is empty
-#see feature folder
+#see feature folder -search_cart.py and search_cart.feature
+
 
 
 
