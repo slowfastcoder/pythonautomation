@@ -6,3 +6,6 @@ Feature: Test Scenarios for Search functionality
     When Input Dog into search field
     And Click on search icon
     Then Product results for Dog are shown
+
+
+

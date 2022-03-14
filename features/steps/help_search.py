@@ -2,6 +2,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from behave import given, when, then
 from time import sleep
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+
 
 #locators go here
 SEARCH_INPUT = (By.CSS_SELECTOR, 'input#helpsearch')
@@ -18,10 +22,11 @@ def open_google(context):
 
 @when('Input {search_word} into help search field')
 def input_search(context, search_word):
-    search = context.driver.find_element(*SEARCH_INPUT)
+    #search = context.driver.find_element(*SEARCH_INPUT)
+    search = context.driver.wait.until(EC.element_to_be_clickable(SEARCH_INPUT), message='search button not clickable')
     search.clear()
     search.send_keys(search_word)
-    sleep(4)
+    #sleep(4)
 
 
 #There is no submit button, so just send keys ENTER
