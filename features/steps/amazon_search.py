@@ -13,17 +13,21 @@ SELECTED_COLOR = (By.XPATH, "//div[@id='variation_color_name']/div/span")
 
 @given('Open Amazon')
 def open_amazon(context):
-    context.driver.get('https://www.amazon.com')
+    #context.driver.get('https://www.amazon.com')
+    context.app.main_page.open_main()
 
 @when ('Search for {keyword}')
 def search_product(context, keyword):
-    context.driver.find_element(*SEARCH_INPUT).send_keys(keyword)
-    context.driver.find_element(*SEARCH_BTN).click()
+    #context.driver.find_element(*SEARCH_INPUT).send_keys(keyword)
+    #context.driver.find_element(*SEARCH_BTN).click()
+    context.app.header.search_product(keyword)
+    context.app.header.click_search()
 
 
 @then ('Verify search results are shown for {keyword}')
 def verify_result(context, keyword):
-    pass
+    #pass
+    context.app.search_results_page.verify_search_result(keyword)
 
 @given('Navigate to Product Page')
 def nav_product(context):

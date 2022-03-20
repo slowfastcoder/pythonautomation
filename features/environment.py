@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
+from app.application import Application
 from selenium.webdriver.support import expected_conditions as EC
 
 
@@ -20,6 +21,7 @@ def browser_init(context):
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
     context.driver.wait = WebDriverWait(context.driver, 10)
+    context.app = Application(context.driver)
 
 
 

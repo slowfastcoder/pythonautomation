@@ -19,7 +19,8 @@ expectedResult = 5
 
 @given('User goes to amazon best seller')
 def navigate_BestSeller(context):
-    context.driver.get(mainURL)
+    #context.driver.get(mainURL)
+    context.app.bestsellers_page.open_amazon_bestsellers()
 
 
 @then('There should be {expectedNumber} links present')
@@ -33,7 +34,7 @@ def verify_links(context, expectedNumber):
 
 
 @when('User clicks {product_num} product to view')
-def add_cart(context, product_num):
+def view_cart(context, product_num):
     context.driver.find_elements(*PRODUCTLIST)[int(product_num)].click()
 
 @when('Adds that product to the cart')
@@ -42,14 +43,41 @@ def add_cart(context):
 
 
 @when('User navigates to view the cart page')
-def add_cart(context):
+def nav_cart(context):
     context.driver.find_element(*VIEWCARTBTN).click()
 
 
 @then('There should be {expectedItem} item in the cart')
-def add_cart(context, expectedItem):
+def verify_cart(context, expectedItem):
     actual = context.driver.find_element(*CART_ACTUALRESULT).text
     print(actual + (expectedItem))
     assert (expectedItem) in actual
+
+
+#class example - Lec 7
+@then ('User can click through top links and verify correct page opens')
+def click_thru_top(context):
+    context.app.bestsellers_page.click_thru_top()
+
+@then ('Verify there are {expected_links} links')
+def verify_links_count(context, expected_links):
+    actualResults = context.driver.find_elements(*ActualURLList)
+    print(str(len(actualResults)) + " " + str(expected_links))
+
+    assert len(actualResults) == int(expected_links)
+    print("Test passed")
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
