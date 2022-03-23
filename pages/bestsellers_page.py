@@ -30,4 +30,15 @@ class BestsellersPage(Page):
             #assert link_text in new_text , f'Expected {link_text} to be in {new_text}'
             self.verify_partial_text(link_text, *self.HEADER)
 
+#hw 7 part 2 - Create POM for add product to cart
+    def view_product(self, product_num: 1):
+        self.driver.find_elements(*self.PRODUCTLIST)[int(product_num)].click()
 
+    def add_cart(self):
+        self.driver.find_element(*self.ADDCARTBTN).click()
+
+    def view_cart(self):
+        self.driver.find_element(*self.VIEWCARTBTN).click()
+
+    def verify_cart(self, expectedText):
+        self.verify_partial_text(expectedText, *self.CART_ACTUALRESULT)

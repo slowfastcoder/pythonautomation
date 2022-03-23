@@ -35,23 +35,29 @@ def verify_links(context, expectedNumber):
 
 @when('User clicks {product_num} product to view')
 def view_cart(context, product_num):
-    context.driver.find_elements(*PRODUCTLIST)[int(product_num)].click()
+    #context.driver.find_elements(*PRODUCTLIST)[int(product_num)].click()
+    context.app.bestsellers_page.view_product(product_num)
+
 
 @when('Adds that product to the cart')
 def add_cart(context):
-    context.driver.find_element(*ADDCARTBTN).click()
+    #context.driver.find_element(*ADDCARTBTN).click()
+    context.app.bestsellers_page.add_cart()
+
 
 
 @when('User navigates to view the cart page')
 def nav_cart(context):
-    context.driver.find_element(*VIEWCARTBTN).click()
+    context.app.bestsellers_page.view_cart()
 
 
 @then('There should be {expectedItem} item in the cart')
 def verify_cart(context, expectedItem):
-    actual = context.driver.find_element(*CART_ACTUALRESULT).text
-    print(actual + (expectedItem))
-    assert (expectedItem) in actual
+    #actual = context.driver.find_element(*CART_ACTUALRESULT).text
+    #print(actual + (expectedItem))
+    #assert (expectedItem) in actual
+    context.app.bestsellers_page.verify_cart(expectedItem)
+
 
 
 #class example - Lec 7
