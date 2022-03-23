@@ -8,5 +8,5 @@ Feature: # Amazon Search
 
   Scenario: User can search for a product2
     Given Open Amazon
-    When Search for "table"
-    Then Verify search results are shown for table
+    When Search for "apple"
+    Then Verify search results are shown for apple
