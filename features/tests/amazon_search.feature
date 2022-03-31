@@ -17,3 +17,16 @@ Feature: # Amazon Search
     When Sort through Color
     Then Verify color selected
 
+  Scenario: User can view language
+    Given Open Amazon
+    When Hover over language options
+    Then Verify Spanish option present
+
+
+  Scenario: User can select and search in a department
+    Given Open Amazon
+    When Select books department
+    And Search for Faust
+    And Click on search icon
+    Then Verify books department is selected
+

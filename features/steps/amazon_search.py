@@ -1,6 +1,5 @@
 from selenium.webdriver.common.by import By
 from behave import given, when, then
-from selenium.webdriver.support import expected_conditions as EC
 
 
 SEARCH_INPUT = (By.ID, 'twotabsearchtextbox')
@@ -10,6 +9,7 @@ SEARCH_BTN = (By.ID, 'nav-search-submit-button')
 product_url01 = "https://www.amazon.com/Dickies-Heavyweight-Sleeve-Big-tall-2X-Large/dp/B00B6EDAS8/ref=sr_1_7?crid=3FJOPF0AMT2W9&keywords=shirts&qid=1647156119&sprefix=shirt%2Caps%2C143&sr=8-7"
 COLOR_LIST = (By.XPATH, "//*[contains(@id,'color_name_')]")
 SELECTED_COLOR = (By.XPATH, "//div[@id='variation_color_name']/div/span")
+
 
 @given('Open Amazon')
 def open_amazon(context):
@@ -53,4 +53,28 @@ def verify_color(context):
             #sometimes error because clicking too fast
             assert (x.get_attribute("title")[16:30]) in y.text
 
-    pass
+@when("Hover over language options")
+def hover_language(context):
+    context.app.main_page.hover_language()
+
+@then("Verify Spanish option present")
+def verify_spanish(context):
+    context.app.main_page.verify_spanish()
+
+#lesson 8 notes
+
+@when("Select books department")
+def select_departments(context):
+    context.app.main_page.select_departments()
+
+@then("Verify books department is selected")
+def verify_books(context):
+    context.app.search_results_page.verify_correct_department()
+
+@when ("Select Dropdown")
+def select_dropdown(context):
+    context.app.main_page.select_dropdown()
+
+@then("Verify Mobile department is selected")
+def verify_books(context):
+    context.app.search_results_page.verify_correct_department2()

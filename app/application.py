@@ -4,6 +4,7 @@ from pages.main_page import MainPage
 from pages.search_results_page import SearchResultsPage
 from pages.sign_in_page import SignInPage
 from pages.shopping_cart_page import ShoppingCartPage
+from pages.new_arrivals_page import NewArrivalsPage
 
 class Application:
 
@@ -15,6 +16,7 @@ class Application:
         self.main_page = MainPage(self.driver)
         self.search_results_page = SearchResultsPage(self.driver)
         self.shopping_cart_page = ShoppingCartPage(self.driver)
+        self.new_arrivals_page = NewArrivalsPage(self.driver)
 
 '''        
 a = Application()
