@@ -13,7 +13,8 @@ class NewArrivalsPage(Page):
     ENTIRE_TEXT = By.XPATH, "//body" #I'm not sure how to grab that hoover over element so i'm using the entire body -_-
 
     def open_url2(self):
-        self.open_url(end_url='gp/product/B074TBCSC8')
+        #self.open_url(end_url='gp/product/B074TBCSC8')
+        self.open_page(end_url='gp/product/B074TBCSC8')
 
     def hoover_New_Arrivals(self):
         y = self.find_element(*self.NEW_ARRIVALS)

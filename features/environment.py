@@ -1,8 +1,11 @@
 from selenium import webdriver
+#from selenium.webdriver.support.event_firing_webdriver import EventFiringWebDriver
+from selenium.webdriver.support.events import EventFiringWebDriver, AbstractEventListener
 from selenium.webdriver.support.ui import WebDriverWait
 from app.application import Application
 from selenium.webdriver.support import expected_conditions as EC
 
+from support.logger import MyListener
 
 
 def browser_init(context):
@@ -12,7 +15,9 @@ def browser_init(context):
 
 
     driverpath = "I:\\selenium python\\driver\\chromedriverv99.exe"
-    context.driver = webdriver.Chrome(executable_path=driverpath)
+    #context.driver = webdriver.Chrome(executable_path=driverpath)
+    #need to enable headless mode here, and loggers here
+    context.driver = EventFiringWebDriver(webdriver.Chrome(executable_path=driverpath), MyListener)
 
     #context.driver = webdriver.Chrome()
     # context.browser = webdriver.Safari()

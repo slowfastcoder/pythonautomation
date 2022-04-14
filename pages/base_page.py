@@ -1,5 +1,6 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from support.logger import logger
 
 class Page:
     def __init__(self, driver):
@@ -8,8 +9,16 @@ class Page:
         self.wait = driver.wait = WebDriverWait(driver, 10) #wait 10 seconds
 
     def open_url(self, end_url: str = ''):
+        #implement loggers
+        logger.info(f'Opening {self.base_url}{end_url}...')
         self.driver.get(f'{self.base_url}{end_url}')
     #def input_text(self, *locator, text): #notes - this will give error, put the asterisk before any arguments (text)
+
+    def open_page(self, end_url=''):
+        print(f'{self.base_url}{end_url}')
+        logger.info(f'Opening {self.base_url}{end_url}...')
+        self.driver.get(f'{self.base_url}{end_url}')
+
 
     def input_text(self, text, *locator):
         self.driver.find_element(*locator).send_keys(text)
